@@ -1,0 +1,37 @@
+#suggestionBox1,
+#suggestionBox2,
+#suggestionBox3 {
+  border-radius: 1px;
+  border: none;
+  margin-top: -15px;
+  display: none;
+  position: absolute;
+  width: 350px;
+  z-index: 1000;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+#suggestionBox1 a,
+#suggestionBox2 a,
+#suggestionBox3 a {
+  text-decoration: none;
+}
+
+#suggestionBox1 a:hover,
+#suggestionBox2 a:hover,
+#suggestionBox3 a:hover {
+  color: var(--bs-success);
+}
+
+/* Media query for larger screens */
+@media (min-width: 992px) {
+
+  #suggestionBox1,
+  #suggestionBox2,
+  #suggestionBox3 {
+    margin-top: 3rem;
+    width: 415px;
+    max-height: 300px;
+  }
+}

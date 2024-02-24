@@ -1,0 +1,36 @@
+{
+  "name": "JobStatistics",
+  "short_name": "JobStats",
+  "description": "A career path oriented webapp, with job statistics, graphs and more.",
+  "start_url": "/index",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0072A7",
+  "icons": [
+    {
+      "src": "../img/manifest/logo192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "../img/manifest/logo500x500.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "../img/manifest/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "../img/manifest/screenshot-mobile.png",
+      "sizes": "640x960",
+      "type": "image/png"
+    }
+  ]
+}

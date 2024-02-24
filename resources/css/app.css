@@ -1,0 +1,112 @@
+@import '../css/scss/app.scss';
+/*Import scss bootsrap */
+@import 'myCss/signInForm.css';
+@import 'myCss/navFooterLogo.css';
+@import 'myCss/suggestionBoxSearch.css';
+@import 'myCss/myCarousel.css';
+@import 'myCss/svgs.css';
+@import 'myCss/svgsSignIn.css';
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container {
+  margin-top: auto;
+}
+
+label {
+  font-size: 0.75rem;
+}
+
+
+.dropdown {
+  z-index: 9999;
+}
+
+.svg-background {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .svg-background {
+    width: 100%;
+  }
+
+  .overlay-content {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.bi {
+  fill: #000;
+  /* default fill color (black) */
+}
+
+
+[data-bs-theme="dark"] .bi {
+  fill: #fff;
+  /* fill color for dark mode (white) */
+}
+
+/*change dropdown->ul->a dark bg color*/
+[data-bs-theme="dark"] .dropdown-menu a.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+[data-bs-theme="light"] ul li svg.bi,
+[data-bs-theme="light"] ul li button {
+  color: rgba(18, 117, 142, 0.9);
+  fill: rgba(18, 117, 142, 0.9);
+  /* Fill color for dark mode (white) */
+}
+
+[data-bs-theme="light"] ul li button.active svg.bi {
+  fill: #fff;
+}
+
+.image-container {
+  max-width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: 2px solid #0072A7;
+  border-radius: 50%;
+
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+/* change color on hover to white */
+.btn-outline-success {
+  &:hover {
+    color: #fff;
+  }
+}

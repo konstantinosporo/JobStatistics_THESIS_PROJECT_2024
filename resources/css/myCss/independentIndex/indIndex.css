@@ -1,0 +1,269 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* Ensure the full height is used */
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
+  overflow-y: hidden;
+  /* Hide vertical scrollbar */
+}
+
+
+
+/* Media queries and other styles */
+/* Rest of your CSS */
+.cover-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.custom-card {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  width: 30em;
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  transform: translate(0, -50%);
+  opacity: 0.9;
+  /* Adjust the opacity as needed */
+}
+
+@media (max-width: 768px) {
+
+  /* Adjust styles for screens smaller than 768px */
+  .custom-card {
+    width: 90%;
+    right: 5%;
+    font-size: 0.8em;
+    /* Adjust font size for smaller screens if necessary */
+  }
+}
+
+/* Animation styles of signin signup buttons */
+.button-container {
+  overflow: hidden;
+}
+
+.sign-in-btn,
+.sign-up-btn {
+  transform: translateX(-100%);
+  /* Start off-screen to the left */
+  opacity: 0;
+  animation: moveButtons 2s forwards;
+}
+
+.sign-up-btn {
+  transform: translateX(100%);
+  /* Start off-screen to the right */
+}
+
+@keyframes moveButtons {
+  to {
+    transform: translateX(0);
+    /* End at natural position */
+    opacity: 1;
+  }
+}
+
+
+/* TODO ADJUST FOR ALL MEDIA SCREENS! */
+
+/* Large screens (Desktops) */
+@media (min-width: 1200px) {
+  .animated {
+    /* Your styles for large screens go here */
+    position: absolute;
+    /* example */
+    top: -2;
+    /* example */
+    left: 0;
+    /* example */
+    width: 100%;
+  }
+}
+@media (max-width: 1200px) {
+  .animated {
+    /* Your styles for large screens go here */
+    position: absolute;
+    /* example */
+    top: 50%;
+    /* example */
+    left: 25%;
+    /* example */
+    width: 100%;
+  }
+}
+/* Large screens (Desktops) */
+@media (max-width: 1023px) {
+  .animated {
+    /* Your styles for large screens go here */
+    position: absolute;
+    /* example */
+    top: 30%;
+    /* example */
+    left: 25%;
+    /* example */
+    width: 100%;
+  }
+  .custom-card {
+    top: 25%;
+    left: 5%;
+  
+  }
+}
+
+
+
+/* Small screens (Phones) */
+@media (max-width: 767px) {
+  .animated {
+    /* Your styles for large screens go here */
+    position: absolute;
+    /* example */
+    top: 20%;
+    /* example */
+    left: 0;
+    /* example */
+    width: 100%;
+  }
+  .custom-card {
+    top: 20%;
+    left: 5%;
+  
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 575px) {
+  .animated {
+    /* Your styles for large screens go here */
+    position: absolute;
+    /* example */
+    top: 40%;
+    /* example */
+    left: 0;
+    /* example */
+    width: 100%;
+  }
+}
+
+svg#freepik_stories-resume:not(.animated) .animable {
+  opacity: 0;
+}
+
+svg#freepik_stories-resume.animated #freepik--Floor--inject-177 {
+  animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideLeft;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-resume.animated #freepik--Shadow--inject-177 {
+  animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideLeft;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-resume.animated #freepik--Plants--inject-177 {
+  animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-resume.animated #freepik--Device--inject-177 {
+  animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideRight, 3s Infinite linear floating;
+  animation-delay: 0s, 1s;
+}
+
+svg#freepik_stories-resume.animated #freepik--graduation-cap--inject-177 {
+  animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-resume.animated #freepik--speech-bubbles--inject-177 {
+  animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) fadeIn, 3s Infinite linear shake;
+  animation-delay: 0s, 1s;
+}
+
+svg#freepik_stories-resume.animated #freepik--Characters--inject-177 {
+  animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) slideLeft;
+  animation-delay: 0s;
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
