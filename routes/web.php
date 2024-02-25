@@ -62,10 +62,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/index-jobs', [AdminController::class, 'viewJobs'])->name('admin.jobs.indexDescriptions');
     Route::get('/admin/edit-jobs/{id}', [AdminController::class, 'editJobs'])->name('admin.jobs.editDescriptions');
     Route::patch('admin/jobs/edit/{id}', [AdminController::class, 'updateJobDescription'])->name('admin.jobs.update');
-    //AJAX
-    Route::get('/suggest-job-categories/admin', [AdminController::class, 'suggestJobCategoriesAdmin']);
     // Delete job description
     Route::delete('admin/jobs/delete/{id}', [AdminController::class, 'deleteJobDescription'])->name('admin.jobs.delete');
+    //AJAX (Search)
+    Route::get('/suggest-job-categories/admin', [AdminController::class, 'suggestJobCategoriesAdmin']);
+    Route::get('/suggest-users/admin', [AdminController::class, 'suggestUsersAdmin']);
     //View/Edit Users
     Route::get('/admin/index-users', [AdminController::class, 'viewUsers'])->name('admin.viewUsers.indexViewUsers');
     // Edit user rights

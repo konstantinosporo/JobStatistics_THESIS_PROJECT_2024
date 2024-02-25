@@ -15,11 +15,11 @@
 @section('content')
   <div class="container">
     @if (isset($admin))
-      <h1 class="mb-4">Welcome, <i class="bi bi-fingerprint me-1 text-success"></i>{{ $admin->name }}!</h1>
-      <p class="lead"><i class="bi bi-arrow-return-right me-1"></i>Explore the statistics and insights below.</p>
+      <h1 class="mb-4">@lang('messages.welcome') <i class="bi bi-fingerprint me-1 text-success"></i>{{ $admin->name }}!</h1>
+      <p class="lead"><i class="bi bi-arrow-return-right me-1"></i>@lang('messages.misc.explore_statistics')</p>
       <hr class="border-1 text-success">
     @else
-      <p>Admin not available</p>
+      <p>@lang('messages.user.user_not_available')</p>
       <hr class="border-1 text-danger">
     @endif
 
@@ -28,7 +28,7 @@
       <div class="col-md-5 col-lg-3 col-8 card shadow-lg p-4 m-1">
         <canvas id="totalUsersChart" width="400" height="400"></canvas>
         <figcaption class="text-center mt-2">
-          <small><i class="bi bi-person-fill"></i> Total Users</small>
+          <small><i class="bi bi-person-fill"></i> @lang('messages.admin.total_users')</small>
         </figcaption>
       </div>
       <hr class="border-1 text-success d-block d-lg-none d-md-none m-auto">
@@ -37,7 +37,7 @@
       <div class="col-md-5 col-lg-3 col-8 card shadow-lg p-3 m-1 m-lg-auto">
         <canvas id="jobListingsChart" width="400" height="400"></canvas>
         <figcaption class="text-center mt-2">
-          <small><i class="bi bi-briefcase-fill"></i> Job Listings & Applications</small>
+          <small><i class="bi bi-briefcase-fill"></i> @lang('messages.admin.total_jobs_applications')</small>
         </figcaption>
       </div>
       <hr class="border-1 text-success d-block d-lg-none d-md-none m-auto">
@@ -45,7 +45,7 @@
       <div class="col-md-5 col-lg-3 col-8 card shadow-lg p-4 m-1">
         <canvas id="messagesChart" width="400" height="400"></canvas>
         <figcaption class="text-center mt-2">
-          <small><i class="bi bi-envelope-fill"></i> Sent & Received Messages</small>
+          <small><i class="bi bi-envelope-fill"></i> @lang('messages.admin.total_messages')</small>
         </figcaption>
       </div>
     </div>

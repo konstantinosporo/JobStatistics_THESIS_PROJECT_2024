@@ -17,8 +17,8 @@
 @section('content')
   <div class="container mt-4 p-3">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3 class="fw-light">@lang('messages.admin_user_table.jobs_table_title')</h3>
-      <div class="input-group" style="max-width: 300px;"> <!-- Set your desired max-width -->
+      <h3 class="fw-light">@lang('messages.admin_job_table.jobs_table_title')</h3>
+      <div class="input-group" style="max-width: 344px;"> <!-- Set your desired max-width -->
         <form class="d-flex mt-3 mt-lg-0" role="search"
           action="{{ $getSearchAction($currentRouteName = request()->route()->getName()) }}" method="GET">
           <div class="input-group">
@@ -36,29 +36,40 @@
     </div>
     <hr class="border-1 text-primary">
 
-    @if (session('success'))
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
+    @if (session('updateSuccess'))
+      <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong><i class="bi bi-check2-circle me-1"></i></strong> @lang('messages.admin_job_table.success_alert')
+      </div>
+    @endif
+    @if (session('deleteSuccess'))
+      <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong><i class="bi bi-check2-circle me-1"></i></strong> @lang('messages.admin_job_table.delete_success_alert')
+      </div>
+    @endif
+    @if (session('updateError'))
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-x-circle me-1"></i> @lang('messages.admin_job_table.error_alert')
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     @endif
-
-    @if (session('error'))
+    @if (session('deleteError'))
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('error') }}
+        <i class="bi bi-x-circle me-1"></i> @lang('messages.admin_job_table.error_alert')
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     @endif
 
     <table class="table table-hover table-striped">
-      <caption><i class="bi bi-table me-1"></i>@lang('messages.admin_user_table.total') {{ $jobDescriptions->total() }}</caption>
+      <caption><i class="bi bi-table me-1"></i>@lang('messages.admin_job_table.total') {{ $jobDescriptions->total() }}</caption>
       <thead>
         <tr>
-          <th>@lang('messages.admin_user_table.id')</th>
-          <th>@lang('messages.admin_user_table.job_description')</th>
-          <th>@lang('messages.admin_user_table.job_category')</th>
+          <th>@lang('messages.admin_job_table.id')</th>
+          <th>@lang('messages.admin_job_table.job_description')</th>
+          <th>@lang('messages.admin_job_table.job_category')</th>
           <th>
-            @lang('messages.admin_user_table.action')
+            @lang('messages.admin_job_table.action')
             <a href="{{ route('admin.jobs.indexDescriptions') }}" class="text-decoration-none ms-2">
               <button class="btn btn-primary p-0 m-0 px-1 float-end"><i class="bi bi-arrow-counterclockwise"></i></button>
             </a>
@@ -124,7 +135,7 @@
           <!-- Delete Confirmation Modal -->
           <div class="modal fade" id="deleteConfirmationModal{{ $jobDescription->id }}" tabindex="-1" role="dialog"
             aria-labelledby="deleteConfirmationModalLabel{{ $jobDescription->id }}" aria-hidden="true">
-            @include('admin.includes.modals.deleteJobmodal')
+            @include('admin.includes.modals.deleteJobModal')
           </div>
         @endforeach
       </tbody>

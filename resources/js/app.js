@@ -8,12 +8,12 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/offcanvas';
 
-
 // import 'bootstrap/js/dist/popover';
 // import 'bootstrap/js/dist/scrollspy';
 //import 'bootstrap/js/dist/tab';
 // import 'bootstrap/js/dist/toast';
 //import 'bootstrap/js/dist/tooltip';
+
 
 //messages js  (AJAX) response notifications    
 import axios from 'axios';
@@ -61,87 +61,39 @@ window.addEventListener('DOMContentLoaded', function () {
 
 });
 
-//search for graphtype1 ''line''
-document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById('searchInput1');
-    const suggestionBox = document.getElementById('suggestionBox1');
 
-    searchInput.addEventListener('input', function () {
-        const query = searchInput.value;
+// (AJAX) for search methos 1=graph1, 2=graph2, 3=admin_jobs_search, 4=admin_users_Search
+function addSearchEventListener(inputId, suggestionBoxId, fetchEndpoint) {
+    const searchInput = document.getElementById(inputId);
+    const suggestionBox = document.getElementById(suggestionBoxId);
 
-        if (query.length > 1) { // Start showing suggestions after 2 or more characters
-            fetch(`/suggest-job-categories?query=${encodeURIComponent(query)}`)
-                .then(response => response.text())
-                .then(data => {
-                    suggestionBox.innerHTML = data;
-                    suggestionBox.style.display = 'block';
-                });
-        } else {
-            suggestionBox.style.display = 'none';
-        }
-    });
+    if (searchInput && suggestionBox) {
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value;
 
-    // Hide suggestion box when clicking outside
-    document.addEventListener('click', function (event) {
-        if (!searchInput.contains(event.target)) {
-            suggestionBox.style.display = 'none';
-        }
-    });
-});
+            if (query.length >= 1) {
+                fetch(`${fetchEndpoint}?query=${encodeURIComponent(query)}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        suggestionBox.innerHTML = data;
+                        suggestionBox.style.display = 'block';
+                    });
+            } else {
+                suggestionBox.style.display = 'none';
+            }
+        });
 
-//search for graphtype2 ''pie''
-document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById('searchInput2');
-    const suggestionBox = document.getElementById('suggestionBox2');
+        // Hide suggestion box when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!searchInput.contains(event.target)) {
+                suggestionBox.style.display = 'none';
+            }
+        });
+    }
+}
 
-    searchInput.addEventListener('input', function () {
-        const query = searchInput.value;
-
-        if (query.length > 1) { // Start showing suggestions after 2 or more characters
-            fetch(`/suggest-job-categories/pie?query=${encodeURIComponent(query)}`)
-                .then(response => response.text())
-                .then(data => {
-                    suggestionBox.innerHTML = data;
-                    suggestionBox.style.display = 'block';
-                });
-        } else {
-            suggestionBox.style.display = 'none';
-        }
-    });
-
-    // Hide suggestion box when clicking outside
-    document.addEventListener('click', function (event) {
-        if (!searchInput.contains(event.target)) {
-            suggestionBox.style.display = 'none';
-        }
-    });
-});
-//search for graphtype2 ''pie''
-document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById('searchInput3');
-    const suggestionBox = document.getElementById('suggestionBox3');
-
-    searchInput.addEventListener('input', function () {
-        const query = searchInput.value;
-
-        if (query.length > 1) { // Start showing suggestions after 2 or more characters
-            fetch(`/suggest-job-categories/admin?query=${encodeURIComponent(query)}`)
-                .then(response => response.text())
-                .then(data => {
-                    suggestionBox.innerHTML = data;
-                    suggestionBox.style.display = 'block';
-                });
-        } else {
-            suggestionBox.style.display = 'none';
-        }
-    });
-
-    // Hide suggestion box when clicking outside
-    document.addEventListener('click', function (event) {
-        if (!searchInput.contains(event.target)) {
-            suggestionBox.style.display = 'none';
-        }
-    });
-});
-
-
+// Call the functions with specific IDs and fetch endpoints
+addSearchEventListener('searchInput1', 'suggestionBox1', '/suggest-job-categories');
+addSearchEventListener('searchInput2', 'suggestionBox2', '/suggest-job-categories/pie');
+addSearchEventListener('searchInput3', 'suggestionBox3', '/suggest-job-categories/admin');
+addSearchEventListener('searchInput4', 'suggestionBox4', '/suggest-users/admin');

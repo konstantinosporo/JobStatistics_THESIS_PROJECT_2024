@@ -1,35 +1,40 @@
-<!-- resources/views/admin/users/delete-modal.blade.php -->
+<!-- resources/views/includes/delete_confirmation_modal.blade.php -->
 
-<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete this user?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form id="deleteForm{{ $user->id }}" action="{{ route('admin.viewUsers.delete', $user->id) }}"
-                    method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete User</button>
-                </form>
-            </div>
-        </div>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="deleteUserModalLabel{{ $user->id }}"><i
+          class="bi bi-exclamation-triangle-fill me-2 text-warning"></i>@lang('messages.admin.delete_title')</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+    <div class="modal-body">
+      <p>@lang('messages.admin.are_you_sure')</p>
+    </div>
+    <div class="modal-footer">
+
+      <form id="deleteForm{{ $user->id }}" action="{{ route('admin.viewUsers.delete', ['id' => $user->id]) }}"
+        method="POST">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" class="btn btn-danger"><i class="bi bi-trash me-1"></i>@lang('messages.buttons.delete')
+        </button>
+
+      </form>
+
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i
+          class="bi bi-x-circle me-1"></i>@lang('messages.admin.cancel')
+      </button>
+    </div>
+  </div>
 </div>
 
 <script>
-    document.getElementById('deleteForm{{ $user->id }}').addEventListener('submit', function(event) {
-        // prevent default form submission
-        event.preventDefault();
+  document.getElementById('deleteForm{{ $user->id }}').addEventListener('submit', function(event) {
+    // prevent default form submission
+    event.preventDefault();
 
-        // submit the form
-        this.submit();
-    });
+    // submit the form
+    this.submit();
+  });
 </script>

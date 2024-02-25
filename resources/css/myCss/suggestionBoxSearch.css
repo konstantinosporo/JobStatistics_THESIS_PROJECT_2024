@@ -1,6 +1,7 @@
 #suggestionBox1,
 #suggestionBox2,
-#suggestionBox3 {
+#suggestionBox3,
+#suggestionBox4 {
   border-radius: 1px;
   border: none;
   margin-top: -15px;
@@ -14,13 +15,15 @@
 
 #suggestionBox1 a,
 #suggestionBox2 a,
-#suggestionBox3 a {
+#suggestionBox3 a,
+#suggestionBox4 {
   text-decoration: none;
 }
 
 #suggestionBox1 a:hover,
 #suggestionBox2 a:hover,
-#suggestionBox3 a:hover {
+#suggestionBox3 a:hover,
+#suggestionBox4 a:hover {
   color: var(--bs-success);
 }
 
@@ -29,7 +32,8 @@
 
   #suggestionBox1,
   #suggestionBox2,
-  #suggestionBox3 {
+  #suggestionBox3,
+  #suggestionBox4 {
     margin-top: 3rem;
     width: 415px;
     max-height: 300px;

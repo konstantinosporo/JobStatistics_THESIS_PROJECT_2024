@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" class="h-100"> <!-- Main layout that is extended to most of my blade files. -->
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Statistical based web application about career paths.">
@@ -11,13 +11,12 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     @vite('resources/css/icons/icons.css')
     @vite('resources/css/app.css')
-
     @yield('customCSS')
 
     <title>JobsStatistics</title>
-</head>
+  </head>
 
-<body>
+  <body>
 
     <!-- Partials -->
     @yield('includes')
@@ -34,14 +33,15 @@
 
     <!-- Footer -->
     <div class="container footer-container">
-        @yield('footer')
+      @yield('footer')
     </div>
 
+   
     <!-- Modules/Scripts -->
     @vite('resources/js/app.js')
     @vite('resources/js/myJs/colorTheme.js')
     @vite('resources/js/myJs/msg.js')
     @yield('specialJS')
-</body>
+  </body>
 
 </html>

@@ -39,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
                         return route('graphType1');
                     case 'admin.jobs.indexDescriptions':
                         return route('admin.jobs.indexDescriptions');
+                    case 'admin.viewUsers.indexViewUsers':
+                        return route('admin.viewUsers.indexViewUsers');
                     default:
                         return route('index');
                 }
@@ -56,6 +58,10 @@ class AppServiceProvider extends ServiceProvider
                         return trans('messages.user.search_cartesian');
                     case 'graphType1':
                         return trans('messages.user.search_pie');
+                    case 'admin.jobs.indexDescriptions':
+                        return trans('messages.admin_job_table.search_job');
+                    case 'admin.viewUsers.indexViewUsers':
+                        return trans('messages.admin_user_table.search_user');
                     default:
                         return trans('messages.misc.search');
                 }

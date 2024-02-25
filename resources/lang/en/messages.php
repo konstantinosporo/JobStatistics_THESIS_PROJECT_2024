@@ -17,7 +17,7 @@ return [
         'unapply' => 'Unapply',
         'back' => 'Go back',
         'delete_cv' => 'Delete CV',
-        
+
     ],
     'index' => [
         'signInToGetStarted' => 'Sign in to get started with your career journey!',
@@ -61,6 +61,7 @@ return [
 
     ],
     'user' => [
+        'user' => "Applicant (user)",
         'create_my_cv' => 'Create My CV',
         'edit_my_cv' => 'Edit CV',
         'cv_details' => 'CV Details',
@@ -162,14 +163,18 @@ return [
         'admin_panel' => 'Admin Panel',
         'edit_jobs' => 'Manage Jobs',
         'view_users' => 'View Users',
-        'admin' => 'Admin',
+        'admin' => 'Administrator (admin)',
         'delete_title' => 'Delete Confirmation',
         'are_you_sure' => 'Are you sure you want to delete this item?',
         'cancel' => 'Cancel',
+        'total_users' => 'Total Users',
+        'total_jobs_applications' => 'Total Jobs & Applications',
+        'total_messages' => 'Total Messages',
+
 
     ],
-    'admin_user_table' => [
-        'jobs_table_title' => 'Jobs control panel',
+    'admin_job_table' => [
+        'job_table_title' => 'Jobs control panel',
         'total' => 'Jobs Table - Total:',
         'id' => 'ID',
         'job_description' => 'Job Description',
@@ -177,19 +182,36 @@ return [
         'action' => 'Action',
         'edit_job_modal_title' => 'Edit Job',
         'success_alert' => 'The job description was updated successfully!',
+        'delete_success_alert' => 'The job description was deleted successfully!',
         'error_alert' => 'Failed to update the job description.',
         'job_description_greek_label' => 'Job Description (Greek)',
         'job_category_greek_label' => 'Job Category (Greek)',
         'job_description_english_label' => 'Job Description (English)',
         'job_category_english_label' => 'Job Category (English)',
         'update_job_button' => 'Update Job',
-
+        'search_job' => 'Search Jobs',
     ],
+    'admin_user_table' => [
+        'user_table_title' => 'User control panel',
+        'total' => 'Users Table - Total:',
+        'id' => 'ID',
+        'name' => 'Username',
+        'email' => 'Email',
+        'user_type' => 'UserType',
+        'created_at' => 'Created at',
+        'success_alert' => 'The user was updated successfully!',
+        'delete_success_alert' => 'The user was deleted successfully!',
+        'error_alert' => 'Failed to update user rights.',
+        'update_user_button' => 'Update User',
+        'search_user' => 'Search Users',
+        'edit_rights' => 'Edit user rights',
+    ],
+
     'recruiter' => [
         'create_job_listing' => 'Create a new Job Listing',
         'job_listing' => 'Create Job Listing',
         'applicants' => 'Applicants',
-        'recruiter' => 'Recruiter:',
+        'recruiter' => 'Recruiter (recruiter)',
         'settings' => 'Settings',
         'graph_caption' => 'Graph of the number of job applications for job listings.',
         'tab_create' => 'Create Job Listing',
@@ -232,6 +254,8 @@ return [
         'GR' => 'GR',
         'or' => 'or',
         'copyright' => 'Poros Ioulios, Student',
+        'explore_statistics' => 'Explore the statistics and insights below.',
+
 
     ],
     'month' => [
