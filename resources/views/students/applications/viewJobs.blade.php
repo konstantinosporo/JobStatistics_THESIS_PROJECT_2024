@@ -10,7 +10,15 @@
 
 @section('content')
   <div class="container">
-    <h2 class="my-5">@lang('messages.user_job_listings.job_listings')</h2>
+    @if (auth()->user())
+      <h2 class="fw-light my-3">@lang('messages.user_job_listings.job_listings') & @lang('messages.navigation.applications')</h2>
+      <p class="lead"><i class="bi bi-arrow-return-right me-1"></i>@lang('messages.misc.explore_statistics')</p>
+      <hr class="border-1 text-success">
+    @else
+      <p>@lang('messages.user.user_not_available')</p>
+      <hr class="border-1 text-danger">
+    @endif
+
 
 
     <div class="row justify-content-center">

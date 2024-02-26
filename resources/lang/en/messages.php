@@ -17,6 +17,7 @@ return [
         'unapply' => 'Unapply',
         'back' => 'Go back',
         'delete_cv' => 'Delete CV',
+        'update_preferences' => 'Update',
 
     ],
     'index' => [
@@ -53,7 +54,7 @@ return [
         'sign_out' => 'Sign out',
     ],
     'content' => [
-        'whats_new' => "Announcements",
+        'whats_new' => "News & announcements",
         'job_opportunities' => 'Job Opportunities: Discover a wide range of job openings from various industries. Whether you\'re a recent graduate or an experienced professional, our platform offers opportunities for everyone.',
         'resume_builder' => 'Resume Builder: Discover a wide range of job openings from various industries. Whether you\'re a recent graduate or an experienced professional, our platform offers opportunities for everyone.',
         'messaging' => 'Messaging: Connect with employers, recruiters, and fellow job seekers through our secure messaging system. Networking has never been easier.',
@@ -72,6 +73,10 @@ return [
         'search_pie' => 'Search "Pie Charts"',
         'sign_up_success' => 'Sign up successfull!',
         'sign_up_error' => 'There was an error signing you up.',
+        'sign_in_error' => 'There was a problem signing you in. Check you credentials!',
+        'save_user_preferences' => 'Save your personalized preferences!',
+        'edit_user_preferences' => 'Edit your personalized preferences!',
+        'delete_user_preferences' => 'Delete your personalized preferences.',
     ],
     'user_job_listings' => [
         'job_title' => 'Job Title:',
@@ -93,6 +98,9 @@ return [
         'edit_experience' => 'Edit Experience:',
         'edit_photo' => 'Edit Photo:',
         'photo_size' => 'Max file size: 5MB',
+        'edit_job_location' => 'Edit Job Location:',
+        'edit_job_category' => 'Edit Job Category:',
+        'edit_job_title' => 'Edit Job Title:',
     ],
     'user_profile_fields' => [
         'first_name' => 'First Name:',
@@ -149,6 +157,12 @@ return [
         'delete' => 'Delete',
         'delete_success' => 'Message deleted successfully!',
         'delete_error' => 'Error while deleting the message.',
+        'preferences_saved_successfully' => 'Preferences saved successfully.',
+        'error_creating_user_preferences' => 'Error creating user preferences. Please try again.',
+        'preferences_updated_successfully' => 'Preferences updated successfully.',
+        'error_updating_user_preferences' => 'Error updating user preferences.',
+        'error_deleting_user_preferences' => 'Error updating user preferences.',
+        'success_deleting_user_preferences' => 'Preferences deleted successfully.',
     ],
     'timestamp' => [
         'just_now' => 'just Now',

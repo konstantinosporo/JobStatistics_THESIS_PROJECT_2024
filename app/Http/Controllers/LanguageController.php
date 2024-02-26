@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
+    // lang controller for dynamically changing the lang objects (supported: english,ελληνικά)
     public function switchLanguage($locale)
     {
         if (in_array($locale, ['en', 'el'])) {

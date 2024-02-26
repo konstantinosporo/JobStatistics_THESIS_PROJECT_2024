@@ -3,62 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\JobCategory;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class JobCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // suggestion box query for job categories
+    public function getJobCategorySuggestions(Request $request)
     {
-        //
+        try {
+            // get the query from the request
+            $query = $request->input('query');
+
+            // fetch job categories that closely match the query
+            $jobCategories = JobCategory::where('english_name', 'like', "%{$query}%")->get(['id', 'english_name']);
+
+            // return the job categories as JSON response
+            return response()->json($jobCategories);
+        } catch (\Exception $e) {
+            // handle unexpected exceptions, return an error JSON response or log the error
+            return response()->json(['error' => 'An unexpected error occurred. Please try again.'], 500);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

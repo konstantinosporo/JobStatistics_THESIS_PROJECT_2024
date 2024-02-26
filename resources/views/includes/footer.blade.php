@@ -50,9 +50,8 @@
         @else
           <li class="nav-item"><a href="{{ route('indexStudent') }}"
               class="nav-link px-2 text-muted">@lang('messages.navigation.home')</a></li>
-          <li class="nav-item"><a href="{{ route('jobs.search') }}"
-              class="nav-link px-2 text-muted">@lang('messages.navigation.jobs')</a></li>
-          <li class="nav-item"><a href="{{ route('statistics') }}"
+
+          <li class="nav-item"><a href="{{ route('graphType1') }}"
               class="nav-link px-2 text-muted">@lang('messages.navigation.statistics')</a></li>
           <li class="nav-item">
             <!-- check if the student has a CV; display My CV link if they do, otherwise show Create CV link -->
@@ -62,6 +61,8 @@
               <a class="nav-link px-2 text-muted" href="{{ route('createCv') }}">@lang('messages.user.create_my_cv')</a>
             @endif
           </li>
+          <li class="nav-item"><a href="{{ route('job_listings.applicant_index') }}"
+              class="nav-link px-2 text-muted">@lang('messages.navigation.applications')</a></li>
         @endif
         <!-- if the user is not signed in, show links for Home, Sign In, and Sign Up -->
       @else

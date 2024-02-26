@@ -13,7 +13,7 @@ class JobDescription extends Model
 
     protected $fillable = [
         'jobdescriptiongreek',
-        // Add other fields as needed
+        'jobdescriptionenglish',
     ];
 
     public function job()

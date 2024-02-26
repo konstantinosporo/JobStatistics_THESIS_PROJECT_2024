@@ -93,7 +93,7 @@ function addSearchEventListener(inputId, suggestionBoxId, fetchEndpoint) {
 }
 
 // Call the functions with specific IDs and fetch endpoints
-addSearchEventListener('searchInput1', 'suggestionBox1', '/suggest-job-categories');
+addSearchEventListener('searchInput1', 'suggestionBox1', '/suggest-job-categories/line');
 addSearchEventListener('searchInput2', 'suggestionBox2', '/suggest-job-categories/pie');
 addSearchEventListener('searchInput3', 'suggestionBox3', '/suggest-job-categories/admin');
 addSearchEventListener('searchInput4', 'suggestionBox4', '/suggest-users/admin');

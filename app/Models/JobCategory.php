@@ -15,4 +15,9 @@ class JobCategory extends Model
     {
         return $this->hasMany(Job::class);
     }
+
+    public function userPreferences()
+    {
+        return $this->hasMany(UserPreferences::class, 'job_category_id');
+    }
 }

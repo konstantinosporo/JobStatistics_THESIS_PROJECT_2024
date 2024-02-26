@@ -8,24 +8,33 @@ use App\Models\JobDescription;
 
 class JobDescriptionController extends Controller
 {
-    public function getJobDescription(Request $request)
+    public function getjobdescription(Request $request)
     {
-        $query = $request->query('query');
+        try {
+            // retrieve the search query from the request
+            $query = $request->query('query');
 
-        // Assuming you have a relationship set up in your JobCategory model
-        $jobCategory = JobCategory::where('english_name', 'like', '%' . $query . '%')
-            ->orWhere('greek_name', 'like', '%' . $query . '%')
-            ->first();
+            // find a jobcategory that matches the query
+            $jobcategory = JobCategory::where('english_name', 'like', '%' . $query . '%')
+                ->orWhere('greek_name', 'like', '%' . $query . '%')
+                ->first();
 
-        if ($jobCategory) {
-            $jobDescription = $jobCategory->jobDescription; // Access the relationship
+            if ($jobcategory) {
+                // access the jobdescription relationship
+                $jobdescription = $jobcategory->jobDescription;
 
-            // Assuming you want to return the description in English
-            return response()->json([
-                'description' => $jobDescription ? $jobDescription->jobdescriptionenglish : 'No description found'
-            ]);
+                // return the job description in english if available, otherwise a default message
+                return response()->json([
+                    'description' => $jobdescription ? $jobdescription->jobdescriptionenglish : 'No description found'
+                ]);
+            }
+
+            // return a default message if no matching jobcategory is found
+            return response()->json(['description' => 'No description found']);
+        } catch (\Exception $e) {
+            // handle unexpected exceptions, return an error response, or log the error
+            return response()->json(['error' => 'Failed to retrieve job description']);
         }
-
-        return response()->json(['description' => 'No description found']);
     }
+
 }

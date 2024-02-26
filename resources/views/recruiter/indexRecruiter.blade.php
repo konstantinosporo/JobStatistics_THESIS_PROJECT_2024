@@ -19,9 +19,10 @@
 @section('content')
   <div class="container mt-5 mb-3">
     @if (isset($recruiter))
-      <h1 class="mb-4"> @lang('messages.welcome') <i class="bi bi-fingerprint me-1 text-success"></i>{{ $recruiter->name }}!
+      <h1 class="mb-3 fw-light"> @lang('messages.welcome') <i
+          class="bi bi-person-check me-1 text-success fs-3"></i>{{ $recruiter->name }}!
       </h1>
-      <p class="lead"><i class="bi bi-arrow-return-right me-1"></i>Explore the statistics and insights below.</p>
+      <p class="lead"><i class="bi bi-arrow-return-right me-1"></i>@lang('messages.misc.explore_statistics')</p>
       <hr class="border-1 text-success">
     @else
       <p>@lang('messages.user.user_not_available')</p>
@@ -31,7 +32,7 @@
 @endsection
 
 @section('component')
-  <div class="container mt-5">
+  <div class="container mt-3">
     <div class="row d-flex justify-content-around">
       <div class="col-12 col-md-8 col-lg-8 card shadow p-3">
         <canvas id="myChart" class="chart-container"></canvas>

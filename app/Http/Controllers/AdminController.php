@@ -12,7 +12,7 @@ use App\Models\JobCategory;
 class AdminController extends Controller
 {
 
-
+    // setting the validation rules
     protected function getValidationRules()
     {
         return [
@@ -20,44 +20,45 @@ class AdminController extends Controller
             'jobdescriptionenglish' => 'required|string',
             'jobcategorygreek' => 'required|string',
             'jobcategoryenglish' => 'required|string',
-            // redundancy
+            // for less redundancy
         ];
     }
 
-
+    // if 'query' in session array get the jobdesciptions from the db
     public function viewJobs(Request $request)
     {
         if ($request->has('query')) {
-            // If a search query is provided, filter the results
+            // if  'query' in session array  filter the results
             $query = $request->input('query');
             $jobDescriptions = JobDescription::with('job')
                 ->where('jobdescriptiongreek', 'LIKE', "%$query%")
                 ->orWhere('jobdescriptionenglish', 'LIKE', "%$query%")
                 ->paginate(1);
         } else {
-            // If no search query, retrieve all jobs
+            //  no search query, retrieve all jobs
             $jobDescriptions = JobDescription::with('job')->paginate(10);
         }
 
         return view('admin.jobs.indexDescriptions', compact('jobDescriptions'));
     }
 
+    // if 'query' in session array get the users from the db
     public function viewUsers(Request $request)
     {
         if ($request->has('query')) {
-            // If a search query is provided, filter the results
+            // if 'query' in session array, filter the results
             $query = $request->input('query');
             $users = User::where('email', 'like', '%' . $query . '%')
                 ->orWhere('id', $query)
                 ->paginate(1);
         } else {
-            // If no search query, retrieve all jobs
+            //  no search query, retrieve all jobs
             $users = User::paginate(10);
         }
         return view('admin.viewUsers.indexUsers', compact('users'));
     }
 
-
+    // if exists $id get jobdescriptions($id) from the db
     public function editJobs($id)
     {
         try {
@@ -69,7 +70,7 @@ class AdminController extends Controller
         }
     }
 
-
+    // if jobdescrription($id) exists and validated data, updated the db
     public function updateJobDescription(Request $request, $id)
     {
         try {
@@ -77,17 +78,17 @@ class AdminController extends Controller
 
             $jobDescription = JobDescription::findOrFail($id);
 
-            // Update job descriptions
+            // update job descriptions if $id exists
             $jobDescription->update([
                 'jobdescriptiongreek' => $validatedData['jobdescriptiongreek'],
                 'jobdescriptionenglish' => $validatedData['jobdescriptionenglish'],
             ]);
 
-            // Update job category name
+            // update job category name if validated data
             $job = $jobDescription->job;
             $jobCategory = $job->jobCategory;
 
-            // Assuming you have fields like 'greek_name' and 'english_name' in your JobCategory model
+            // update job category
             $jobCategory->update([
                 'greek_name' => $validatedData['jobcategorygreek'],
                 'english_name' => $validatedData['jobcategoryenglish'],
@@ -99,7 +100,7 @@ class AdminController extends Controller
         }
     }
 
-
+    // if jobdescription($id) exists deleted jobdescription from db
     public function deleteJobDescription($id)
     {
         try {
@@ -117,7 +118,7 @@ class AdminController extends Controller
         }
     }
 
-    //return view for modal
+    // return view for modal
     public function editUser($id)
     {
         try {
@@ -130,7 +131,7 @@ class AdminController extends Controller
     }
 
 
-    //save the update changes
+    // save the update changes
     public function updateUser(Request $request, $id)
     {
         try {
@@ -147,6 +148,8 @@ class AdminController extends Controller
             return redirect()->route('admin.viewUsers.indexViewUsers')->with('updateError', 'Failed to update user');
         }
     }
+
+    // if user($id) exists delete from db
     public function deleteUser($id)
     {
         try {
@@ -165,12 +168,12 @@ class AdminController extends Controller
     }
 
 
-    //suggest job_categories (search)
+    // suggest job_categories (search)
     public function suggestJobCategoriesAdmin(Request $request)
     {
         $query = $request->query('query');
 
-        // Fetch job categories that closely match the query
+        // fetch job categories that closely match the query
         $jobCategories = JobCategory::where('english_name', 'like', '%' . $query . '%')
             ->orWhere(
                 'greek_name',
@@ -179,22 +182,22 @@ class AdminController extends Controller
             )
             ->get();
 
-        // Return a view with job category suggestions
+        // return a view with job category suggestions
         return view('admin.includes.partials.admin_search_jobs', ['jobCategories' => $jobCategories]);
     }
-    //suggest users (search)
+    // suggest users (search)
     public function suggestUsersAdmin(Request $request)
     {
         $query = $request->query('query');
 
-        // Fetch users based on email or ID
+        // fetch users based on email or ID
         $users = User::where('email', 'like', '%' . $query . '%')
             ->orWhere('id', $query)
             ->get();
 
         //dd($users);
 
-        // Return a view with user suggestions
+
         return view('admin.includes.partials.admin_search_users', ['users' => $users]);
     }
 

@@ -10,7 +10,6 @@ class CV extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'first_name',
         'last_name',
         'date_of_birth',
@@ -24,7 +23,7 @@ class CV extends Model
     protected $table = 'cvs';
 
     /**
-     * Get the user that owns the CV.
+     * get the user that owns the CV.
      */
     public function user()
     {
@@ -32,7 +31,7 @@ class CV extends Model
     }
 
     /**
-     * Accessor for getting the full URL of the photo.
+     * accessor for getting the full URL of the photo.
      */
     public function getPhotoUrlAttribute()
     {

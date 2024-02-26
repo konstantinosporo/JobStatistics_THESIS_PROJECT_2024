@@ -2,7 +2,7 @@
   <ul class="list-group">
     @foreach ($jobCategories as $category)
       <li class="list-group-item">
-        <a href="{{ route('graphType1', ['query' => $category->english_name]) }}">
+        <a href="{{ route('graphType2', ['query' => $category->english_name]) }}">
           @if (app()->getLocale() == 'en')
             {{ $category->english_name }}
           @else

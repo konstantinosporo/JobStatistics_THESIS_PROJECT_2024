@@ -12,7 +12,7 @@ class CreateJobListingsTable extends Migration
     {
         Schema::create('job_listings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('recruiter_id')->constrained('users')->onDelete('cascade');;
+            $table->foreignId('recruiter_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('job_category_id')->constrained('job_categories');
             $table->string('job_title');
             $table->text('job_description');

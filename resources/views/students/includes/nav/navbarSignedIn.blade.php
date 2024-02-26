@@ -25,8 +25,8 @@
                 href="{{ route('indexStudent') }}">@lang('messages.navigation.home')</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ request()->routeIs(['statistics', 'graphType1']) ? 'active' : '' }}"
-                href="{{ route('statistics') }}">@lang('messages.navigation.statistics')</a>
+              <a class="nav-link {{ request()->routeIs(['graphType1', 'graphType2']) ? 'active' : '' }}"
+                href="{{ route('graphType1') }}">@lang('messages.navigation.statistics')</a>
             </li>
             <li class="nav-item">
               @if (auth()->user()->hasCv())

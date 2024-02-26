@@ -93,4 +93,9 @@ class User extends Authenticatable
         return $this->hasMany(JobListing::class, 'recruiter_id');
     }
 
+    public function userPreferences()
+    {
+        return $this->hasOne(UserPreferences::class);
+    }
+
 }

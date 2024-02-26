@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends User
 {
-    // Constructor to automatically set the role
+    // constructor to automatically set the role
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
@@ -15,5 +15,4 @@ class Admin extends User
         $this->role = self::ROLE_ADMIN;
     }
 
-    // Admin-specific methods...
 }

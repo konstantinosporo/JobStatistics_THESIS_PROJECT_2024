@@ -29,29 +29,31 @@ Route::middleware(['auth'])->group(function () {
   Route::middleware(['user'])->group(function () {
     // Index route
     Route::get('/indexStudent', [RedirectionsController::class, 'signedInRedirect'])->name('indexStudent');
-
     // Job Search and Statistics Routes
     Route::get('/jobs/search', [JobController::class, 'search'])->name('jobs.search');
-    Route::get('/statistics', [JobController::class, 'statistics'])->name('statistics');
-    Route::get('/showGraphType1', [JobController::class, 'showGraphType1'])->name('graphType1');
-
-    // (AJAX) Routes user/recruiter/admin
-    Route::get('/suggest-job-categories', [JobController::class, 'suggestJobCategories']);
+    Route::get('/statistics/showGraphType1', [JobController::class, 'showgraphType1'])->name('graphType1');
+    Route::get('/statistics/showGraphType2', [JobController::class, 'showgraphType2'])->name('graphType2');
+    // (AJAX) Routes user
+    Route::get('/suggest-job-categories/line', [JobController::class, 'suggestJobCategoriesLine']);
     Route::get('/suggest-job-categories/pie', [JobController::class, 'suggestJobCategoriesPie']);
     Route::get('/get-job-description', [JobDescriptionController::class, 'getJobDescription']);
-
     // CV Routes
     Route::get('/createCv', [CvController::class, 'create'])->name('createCv');
     Route::post('/storeCv', [CvController::class, 'store'])->name('storeCv');
     Route::get('/editCv', [CvController::class, 'edit'])->name('editCv');
     Route::post('/editCv', [CVController::class, 'update'])->name('updateCv');
     Route::delete('/deleteCV', [CVController::class, 'delete'])->name('deleteCv');
-
+    // USER Preferences Routes
+    Route::post('/storePreferences', [UserPreferencesController::class, 'store'])->name('storePreferences');
+    Route::get('/editPreferences', [UserPreferencesController::class, 'edit'])->name('editPreferences');
+    Route::post('/updatePreferences', [UserPreferencesController::class, 'update'])->name('updatePreferences');
+    Route::delete('/deletePreferences', [UserPreferencesController::class, 'delete'])->name('deletePreferences');
     // Applicant(User) Routes
     Route::get('/job_listings/applicant', [JobListingController::class, 'showJobListingsForApplicants'])
       ->name('job_listings.applicant_index');
     Route::post('/job_listings/applicant/{jobListing}', [JobListingController::class, 'apply'])
       ->name('job_listings.applicant');
+
   });
 
   //(ADMIN)
@@ -74,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('admin/user/edit/{id}', [AdminController::class, 'updateUser'])->name('admin.viewUsers.updateUser');
     // Delete user
     Route::delete('admin/user/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.viewUsers.delete');
+
   });
 
 
@@ -81,19 +84,20 @@ Route::middleware(['auth'])->group(function () {
   Route::middleware(['recruiter'])->group(function () {
     Route::get('/signedInRecruiter', [RedirectionsController::class, 'signedInRecruiterRedirect'])->name('signedInRecruiter');
     Route::get('/job_listings', [JobListingController::class, 'index'])->name('job_listings.index');
-    Route::post('/job_listings', [JobListingController::class, 'store'])->name('job_listings.store');
-    Route::get('/job_listings/create', [JobListingController::class, 'create'])->name('job_listings.create');
+    Route::post('/job_listings', [RecruiterController::class, 'store'])->name('job_listings.store');
+    Route::get('/job_listings/create', [RecruiterController::class, 'create'])->name('job_listings.create');
     Route::get('/job_listings/view', [JobListingController::class, 'showJobListingsForRecruiters'])->name('recruiter.job_listings.view');
-    Route::get('/job_listings/edit/{id}', [JobListingController::class, 'edit'])->name('job_listings.edit');
-    Route::patch('/job_listings/{id}', [JobListingController::class, 'update'])->name('job_listings.update');
-    Route::delete('/job_listings/{jobListing}', [JobListingController::class, 'destroy'])->name('job_listings.destroy');
-    Route::get('/job_listings/applicants', [JobListingController::class, 'showApplicants'])->name('job_listings.showApplicants');
-    Route::get('/suggest-job-categories-recruiter', [JobListingController::class, 'getJobCategorySuggestions']);
+    Route::get('/job_listings/edit/{id}', [RecruiterController::class, 'edit'])->name('job_listings.edit');
+    Route::patch('/job_listings/{id}', [RecruiterController::class, 'update'])->name('job_listings.update');
+    Route::delete('/job_listings/{jobListing}', [RecruiterController::class, 'destroy'])->name('job_listings.destroy');
+    Route::get('/job_listings/applicants', [RecruiterController::class, 'showApplicants'])->name('job_listings.showApplicants');
+    Route::get('/suggest-job-categories-recruiter', [JobCategoryController::class, 'getJobCategorySuggestions']);
 
     // View CV of the Applicant
     Route::get('/viewCv/{cv}', [CvController::class, 'view'])->name('viewCv');
     //View and send messages
     Route::get('/recruiter/messages', [MessageController::class, 'recruiterIndex'])->name('recruiter.messages.index');
+
   });
 
   // Messaging Routes
@@ -105,6 +109,7 @@ Route::middleware(['auth'])->group(function () {
     ->name('getNewMessagesCount');
   //Messagin Soft deleting
   Route::delete('/messages/{id}', [MessageController::class, 'softDestroy'])->name('messages.destroy');
+
 });
 
 
