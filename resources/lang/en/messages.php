@@ -87,6 +87,12 @@ return [
         'job_category' => 'Job Category:',
         'already_applied' => 'You have already applied for this job!',
         'created_at' => 'Created at:',
+        'myjobs' => 'My Jobs',
+        'alljobs' => 'All Jobs',
+        'require_preferences' => 'Save your preferences to use this feature!',
+        'no_personalized_jobs' => 'No job listings found for you.',
+        'myJobsFound' => 'Job listings found for you!',
+
     ],
     'user_edit_fields' => [
         'edit_first_name' => 'Edit First Name:',

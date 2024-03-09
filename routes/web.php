@@ -49,8 +49,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/updatePreferences', [UserPreferencesController::class, 'update'])->name('updatePreferences');
     Route::delete('/deletePreferences', [UserPreferencesController::class, 'delete'])->name('deletePreferences');
     // Applicant(User) Routes
-    Route::get('/job_listings/applicant', [JobListingController::class, 'showJobListingsForApplicants'])
-      ->name('job_listings.applicant_index');
+    Route::get('/job_listings/applicant/myJobs', [JobListingController::class, 'showMyJobListingsForApplicants'])
+      ->name('job_listings.applicant_myJobs');
+    Route::get('/job_listings/applicant/allJobs', [JobListingController::class, 'showAllJobListingsForApplicants'])
+      ->name('job_listings.applicant_allJobs');
     Route::post('/job_listings/applicant/{jobListing}', [JobListingController::class, 'apply'])
       ->name('job_listings.applicant');
 

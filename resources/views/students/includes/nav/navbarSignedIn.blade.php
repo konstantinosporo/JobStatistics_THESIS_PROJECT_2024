@@ -38,8 +38,8 @@
               @endif
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ request()->routeIs('job_listings.applicant_index') ? 'active' : '' }}"
-                href="{{ route('job_listings.applicant_index') }}">@lang('messages.navigation.applications')</a>
+              <a class="nav-link {{ request()->routeIs('job_listings.applicant_myJobs') ? 'active' : '' }}"
+                href="{{ route('job_listings.applicant_myJobs') }}">@lang('messages.navigation.applications')</a>
             </li>
 
 

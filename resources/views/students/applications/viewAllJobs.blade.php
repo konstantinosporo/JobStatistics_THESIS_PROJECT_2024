@@ -9,19 +9,17 @@
 @endsection
 
 @section('content')
-  <div class="container">
+  <div class="container mt-lg-3">
+
     @if (auth()->user())
       <h2 class="fw-light my-3">@lang('messages.user_job_listings.job_listings') & @lang('messages.navigation.applications')</h2>
-      <p class="lead"><i class="bi bi-arrow-return-right me-1"></i>@lang('messages.misc.explore_statistics')</p>
-      <hr class="border-1 text-success">
+      @include('students.includes.navTabs.applyNavTabs')
     @else
       <p>@lang('messages.user.user_not_available')</p>
       <hr class="border-1 text-danger">
     @endif
 
-
-
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-lg-5">
       @foreach ($jobListings as $jobListing)
         <div class="col-md-6 mb-4">
           <div class="card p-3">

@@ -61,7 +61,7 @@
               <a class="nav-link px-2 text-muted" href="{{ route('createCv') }}">@lang('messages.user.create_my_cv')</a>
             @endif
           </li>
-          <li class="nav-item"><a href="{{ route('job_listings.applicant_index') }}"
+          <li class="nav-item"><a href="{{ route('job_listings.applicant_myJobs') }}"
               class="nav-link px-2 text-muted">@lang('messages.navigation.applications')</a></li>
         @endif
         <!-- if the user is not signed in, show links for Home, Sign In, and Sign Up -->

@@ -23,21 +23,61 @@ class JobListingController extends Controller
         }
     }
 
-
-    // get the categories for the applicants
-    public function showJobListingsForApplicants()
+    // get the jobs for the applicants
+    public function showAllJobListingsForApplicants()
     {
         try {
             // load the applicants relationship for all job listings
             $jobListings = JobListing::with('applicants')->get();
 
             // return the view with job listings data
-            return view('students.applications.viewJobs', compact('jobListings'));
+            return view('students.applications.viewAllJobs', compact('jobListings'));
         } catch (\Exception $e) {
             // handle unexpected exceptions, redirect to an error view or log the error
-            return redirect()->route('students.applications.viewJobs')->with('error', 'An unexpected error occurred. Please try again.');
+            return redirect()->route('job_listings.applicant_allJobs')->with('error', 'An unexpected error occurred. Please try again.');
         }
     }
+
+    public function showMyJobListingsForApplicants()
+    {
+        try {
+            // Load the user's preferences
+            $userPreferences = auth()->user()->userPreferences;
+
+            // Check if preferences are saved
+            if ($userPreferences) {
+                // Get job listings based on preferences
+                $jobListings = JobListing::where(function ($query) use ($userPreferences) {
+                    $query->where('job_category_id', $userPreferences->job_category_id)
+                        ->orWhere('location', $userPreferences->location)
+                        ->orWhere('job_title', $userPreferences->job_title);
+                })->with('applicants')->get();
+
+                // Check if personalized jobs were found
+                if ($jobListings->isEmpty()) {
+                    $message = trans('messages.user_job_listings.no_personalized_jobs');
+                } else {
+                    $message = trans('messages.user_job_listings.myJobsFound');
+                }
+
+            } else {
+                // User has no preferences
+                $message = trans('messages.user_job_listings.require_preferences');
+                $jobListings = collect(); // Empty collection, as there are no preferences
+            }
+
+            // Return the view with personalized job listings data and optional message
+            return view('students.applications.viewMyJobs', compact('jobListings', 'message'));
+
+        } catch (\Exception $e) {
+            // Log the error
+            \Log::error('Error in showMyJobListingsForApplicants: ' . $e->getMessage());
+            // Redirect with an error message
+            return redirect()->route('job_listings.applicant_myJobs')->with('error', 'An unexpected error occurred. Please try again.');
+        }
+    }
+
+
 
 
     // get the categories for recruiters
